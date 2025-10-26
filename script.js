@@ -120,4 +120,5 @@ function switchImage(event, containerId, targetIndex) {
             link.classList.add('active'); 
         }
     });
+
 }
