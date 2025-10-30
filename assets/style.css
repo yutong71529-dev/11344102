@@ -81,13 +81,6 @@ body {
     align-items: start;
 }
 
-@media (min-width: 768px) {
-    .profile-grid {
-        grid-template-columns: 1fr 1.5fr 1fr; 
-        gap: 3rem; 
-    }
-}
-
 .profile-photo-container {
     display: flex;
     flex-direction: column;
@@ -160,11 +153,6 @@ body {
     text-align: left;
 }
 
-@media (min-width: 768px) {
-    .profile-slogan-text {
-        font-size: 2em; 
-    }
-}
 
 /* 4. 關於我 (About Me) 區塊 */
 .dark-card-container {
@@ -178,25 +166,12 @@ body {
     grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
-    .dark-card-container {
-        grid-template-columns: 1fr 2fr;
-    }
-}
-
 .social-column {
     padding: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
     display: flex;
     flex-direction: column; 
     justify-content: flex-end; 
-}
-
-@media (min-width: 768px) {
-    .social-column {
-        border-bottom: none;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
 }
 
 .social-list {
@@ -234,11 +209,6 @@ body {
     line-height: 1;
     text-align: right; 
     padding-bottom: 1rem; 
-}
-@media (min-width: 768px) {
-    .about-large-title {
-        font-size: 4.5rem; 
-    }
 }
 
 .about-text {
@@ -288,17 +258,6 @@ body {
     align-items: flex-start;
 }
 
-@media (min-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); 
-    }
-}
-@media (min-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr)); 
-    }
-}
-
 .skill-item {
     background-color: white;
     padding: 1.5rem;
@@ -337,9 +296,9 @@ body {
     stroke: #3498DB; 
     stroke-linecap: round;
     stroke-dasharray: 439.8; 
-    /* CSS 動畫: 圓形進度條動畫起始值 */
+    /* CSS 動態效果: 圓形進度條動畫起始值 */
     stroke-dashoffset: 439.8; 
-    /* CSS 動畫: 定義進度條補間動畫 */
+    /* CSS 動態效果: 定義進度條補間動畫 */
     transition: stroke-dashoffset 1.5s ease-out; 
 }
 
@@ -465,20 +424,12 @@ body {
     max-width: 25%;
 }
 
-@media (min-width: 768px) {
-    .exp-card {
-        flex-direction: row; 
-        align-items: flex-start;
-        gap: 2rem;
-    }
-}
-
 .exp-card-image-container {
     position: relative; 
     flex-shrink: 0;
     text-align: center;
     
-    /* 圖片輪播容器尺寸 */
+    /* 圖片輪播容器尺寸 - 移除固定寬高以適應 RWD */
     width: 400px; 
     height: 420px; 
 }
@@ -558,26 +509,7 @@ body {
     margin-bottom: 1rem; 
 }
 
-/* 經歷區塊 響應式佈局 */
-@media (max-width: 768px) {
-    .video-content-wrapper {
-        flex-direction: column; 
-    }
-    .video-container {
-        max-width: 100%; 
-    }
-    .exp-card-image-container {
-        width: 100%; 
-        height: auto; 
-    }
-    .exp-card-image-wrapper {
-        width: 100%; 
-        height: 220px; 
-    }
-    .exp-card-details {
-        padding-top: 0; 
-    }
-}
+
 /* TIMELINE 特殊樣式 (針對工作經歷) */
 .timeline-container {
     position: relative;
@@ -619,28 +551,25 @@ body {
 /* 7. 獎狀/榮譽 (Awards) 樣式 */
 #awards-section {
     padding-top: 3rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem; 
     border-top: 1px solid #D1D5DB;
     background-color: #F8F4F0; 
 }
 
+/* 這是主要的容器，將控制卡片的排列 */
 .awards-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); 
-    gap: 1.5rem; 
-    justify-content: center; 
-    max-width: 1000px; 
-    margin: 0 auto;
+    display: flex; /* 使用 Flexbox */
+    flex-wrap: wrap; /* 允許項目換行 */
+    justify-content: center; /* 將 Flex 項目水平居中 */
+    gap: 1.5rem; /* 項目之間的間距 */
+    max-width: 1200px; /* 限制 awards-grid 的最大寬度，避免過度拉伸 */
+    margin: 0 auto; /* 讓 awards-grid 本身在頁面中居中 */
     padding-top: 1.5rem;
+    padding-left: 1.5rem; /* 增加左右內邊距以保持卡片不貼邊 */
+    padding-right: 1.5rem;
 }
 
-@media (min-width: 768px) {
-    .awards-grid {
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-
-
+/* 所有卡片的共同樣式 */
 .award-card {
     background-color: white; 
     border-radius: 0.5rem;
@@ -650,11 +579,13 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden; 
+    flex-shrink: 0; /* 防止卡片被壓縮 */
 }
 
 .award-card-image {
     width: 100%;
-    height: 280px; 
+    height: 300px; 
+    position: relative; 
     background-color: white; 
     display: flex;
     align-items: center;
@@ -662,21 +593,43 @@ body {
 }
 
 .award-card-image img {
-    display: block; 
+    position: absolute; 
+    top: 0;
+    left: 0;
     width: 100%; 
-    object-fit: cover; 
     height: 100%; 
-    align-self: center;
-    justify-self: center;
+    object-fit: cover; 
+    padding: 0; 
 }
 
-.award-card-text {
-    padding: 0.75rem 0.5rem; 
+/* 針對橫向圖片的卡片做特殊處理 */
+.award-card-landscape {
+    /* 讓橫向卡片在 Flexbox 中強制換行 */
+    flex-basis: 100%; /* 佔用 100% 寬度以換行 */
+    max-width: 620px; /* 限制橫向卡片的最大寬度，使其不會無限拉伸 */
+    margin-left: auto; /* 在換行後使其居中 */
+    margin-right: auto;
+    margin-top: 1.5rem; /* 增加與上方卡片的間距 */
+}
+
+.award-card-landscape .award-card-image {
+    height: 180px; /* 橫向圖片容器的高度設得較矮 */
+}
+
+.award-card-landscape .award-card-text {
     background-color: #FBF5F3; 
     color: black;
     font-size: 1rem;
     font-weight: 600;
-    flex-grow: 1; 
+    padding: 0.5rem 0.5rem; 
+}
+
+.award-card-text {
+    padding: 0.5rem 0.5rem; 
+    background-color: #FBF5F3;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .award-card p {
@@ -685,7 +638,6 @@ body {
     margin: 0; 
 }
 
-
 /* 8. 頁腳 (Footer) 樣式 */
 .page-footer {
     background-color: #4A4E69;
@@ -693,7 +645,7 @@ body {
     padding: 1.5rem;
     text-align: center;
     font-size: 0.875rem;
-    margin-top: 5rem;
+    margin-top: 0; 
 }
 
 #back-to-top-btn {
@@ -709,10 +661,8 @@ body {
     overflow: hidden; 
     background: transparent; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-    /* CSS 動態效果: 回頂部按鈕過渡動畫 */
     transition: transform 0.2s, opacity 0.2s;
 }
-
 
 #back-to-top-btn img {
     width: 100%;
@@ -722,8 +672,218 @@ body {
 }
 
 #back-to-top-btn:hover {
-    /* CSS 動態效果: 回頂部按鈕滑鼠懸停放大 */
     transform: scale(1.1); 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); 
+}
 
+
+/* 響應式設計 Media Queries 區塊 */
+
+/* 適用於 平板及桌面寬度 (min-width: 768px)                     */
+/* ---------------------------------------------------------- */
+@media (min-width: 768px) {
+    
+    /* 1. 個人簡介 (Profile) 區塊：調整格線佈局 */
+    .profile-grid {
+        grid-template-columns: 1fr 1.5fr 1fr; 
+        gap: 3rem; 
+    }
+    .profile-slogan-text {
+        font-size: 2em; 
+    }
+
+    /* 2. 關於我 (About Me) 區塊：調整格線佈局和邊界 */
+    .dark-card-container {
+        grid-template-columns: 1fr 2fr;
+    }
+    .social-column {
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .about-large-title {
+        font-size: 4.5rem; 
+    }
+
+    /* 3. 專業技能 (Skills) 區塊：調整格線佈局 */
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 平板兩欄 */
+    }
+    
+    /* 4. 個人經歷 (Experience) 區塊：調整卡片佈局 */
+    .exp-card {
+        flex-direction: row; 
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .award-card {
+        width: 300px; 
+        height: 220px; 
+    }
+
+    .award-card-landscape {
+        width: 715px;
+        height: 195px; 
+    }
+}
+
+/* ---------------------------------------------------------- */
+/* 適用於 較大桌面寬度 (min-width: 1024px)                     */
+/* ---------------------------------------------------------- */
+@media (min-width: 1024px) {
+    /* 1. 專業技能 (Skills) 區塊：調整格線佈局 */
+    .skills-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); 
+    }
+    
+    .award-card {
+        width: 300px;
+        height: 300px; 
+    }
+    .award-card-landscape {
+        width: 715px; 
+        height: 220px; 
+    }
+}
+
+
+
+/* ---------------------------------------------------------- */
+/* 適用於 手機寬度 (max-width: 768px) - 確保滿版置中           */
+/* ---------------------------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* 1. 主要容器：移除邊距，實現滿版 */
+    .main-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    /* 2. 導覽列：確保置中且不換行 */
+    .nav-content {
+        justify-content: space-around; /* 平均分散項目 */
+        padding: 0 0.5rem;
+    }
+    .nav-item {
+        padding: 0 0.5rem; /* 縮小邊距 */
+        font-size: 0.9rem;
+    }
+    .nav-item + .nav-item::before {
+        display: none; /* 移除分隔線 */
+    }
+
+    /* 3. 個人簡介 (Profile) 區塊：單欄顯示，內容置中 */
+    .profile-section {
+        padding: 2rem 0; /* 垂直間距 */
+    }
+    .profile-grid {
+        grid-template-columns: 1fr; /* 單欄 */
+        text-align: center; /* 內容置中 */
+        padding: 0 1.5rem;
+    }
+    .profile-slogan-text {
+        text-align: center; /* 標語置中 */
+        font-size: 1.5em; /* 縮小字體 */
+    }
+    .profile-info-list {
+        text-align: left; /* 列表內容維持左對齊 */
+        padding-left: 2rem;
+    }
+    .profile-photo-container, .profile-photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 4. 關於我 (About Me) 區塊：單欄堆疊，滿版，內容置中 */
+    .dark-card-container {
+        grid-template-columns: 1fr;
+        border-radius: 0; /* 滿版時移除圓角 */
+        margin-bottom: 2rem;
+    }
+    .social-column {
+        border-right: none;
+        align-items: center; /* 社交圖示置中 */
+    }
+    .social-list {
+        display: flex; /* 橫向排列社交圖示 */
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .social-icon-item {
+        flex-direction: column; /* 圖示和文字垂直堆疊 */
+        margin-bottom: 0;
+    }
+    .social-icon-item img {
+        margin-left: 0;
+    }
+    .about-large-title {
+        text-align: center; /* 標題置中 */
+        font-size: 3rem;
+    }
+    .about-content-right {
+        padding: 1.5rem;
+    }
+
+    /* 5. 專業技能 (Skills) 區塊：單欄顯示，內容置中 */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+    }
+    .skill-item {
+        align-items: center;
+        text-align: center;
+    }
+    .section-title span {
+        font-size: 1.5rem;
+    }
+    
+    /* 6. 個人經歷 (Experience) 區塊：單欄堆疊，滿版 */
+    .exp-card {
+        flex-direction: column; /* 垂直堆疊 */
+        padding: 1.5rem;
+        border-radius: 0; /* 滿版時移除圓角 */
+    }
+    .video-content-wrapper {
+        flex-direction: column; /* 影片和文字垂直堆疊 */
+        padding: 0;
+    }
+    .video-container {
+        max-width: 100%; /* 影片滿寬 */
+    }
+    .exp-card-image-container {
+        width: 100%; /* 圖片容器滿寬 */
+        height: auto; 
+    }
+    .exp-card-image-wrapper {
+        width: 100%; 
+        height: 220px; /* 統一高度 */
+    }
+    .exp-card-details {
+        padding-top: 0; 
+    }
+
+    /* 7. 獎狀/榮譽 (Awards) 區塊：單欄顯示，滿版 */
+    .awards-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+        max-width: none;
+    }
+    .award-card {
+        border-radius: 0;
+    }
+    /* 讓圖片在手機上維持滿版，並適當設定高度 */
+    .award-card-image {
+        height: 200px; 
+    }
+    .award-card-landscape .award-card-image {
+        height: 150px; 
+    }
+    
+    /* 8. 回頂部按鈕：縮小尺寸 */
+    #back-to-top-btn {
+        width: 50px; 
+        height: 50px; 
+        bottom: 20px; 
+        right: 20px; 
+    }
 }
